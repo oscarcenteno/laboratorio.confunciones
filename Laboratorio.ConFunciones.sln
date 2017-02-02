@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laboratorio.Negocio", "Laboratorio.Negocio\Laboratorio.Negocio.csproj", "{36C74C17-818C-4788-8380-D6C41CF64784}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laboratorio.Negocio.UnitTests", "Laboratorio.Negocio.UnitTests\Laboratorio.Negocio.UnitTests.csproj", "{0D5B1ACB-1DAB-4D24-8158-DEC93EE694AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36C74C17-818C-4788-8380-D6C41CF64784}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36C74C17-818C-4788-8380-D6C41CF64784}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36C74C17-818C-4788-8380-D6C41CF64784}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36C74C17-818C-4788-8380-D6C41CF64784}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D5B1ACB-1DAB-4D24-8158-DEC93EE694AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D5B1ACB-1DAB-4D24-8158-DEC93EE694AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D5B1ACB-1DAB-4D24-8158-DEC93EE694AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D5B1ACB-1DAB-4D24-8158-DEC93EE694AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
