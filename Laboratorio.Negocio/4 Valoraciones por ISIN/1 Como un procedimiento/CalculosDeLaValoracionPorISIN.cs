@@ -20,35 +20,34 @@ namespace Negocio.ValoracionesPorISIN.ComoUnProcedimiento
         {
             ValoracionPorISIN laValoracion = new ValoracionPorISIN();
 
-            double losDiasAlVencimiento = laFechaDeVencimientoDelValorOficial.Subtract(laFechaActual).TotalDays;
-
-            // Si no cumple los días mínimos, el porcentaje de cobertura es cero
-            decimal elPorcentajeDeCoberturaRevisado = 0;
-            if (losDiasAlVencimiento < losDiasMinimosAlVencimientoDelEmisor)
-                elPorcentajeDeCoberturaRevisado = 0;
-            else
-                elPorcentajeDeCoberturaRevisado = elPorcentajeCobertura;
+            laValoracion.ISIN = elISIN;
 
             // Solamente se convierten los UDES que están anotados en cuenta. Los que no están anotados ya están colonizados.
             decimal elMontoConvertido;
             if (elTipoDeMoneda == Monedas.UDES & elSaldoEstaAnotadoEnCuenta)
-            // Los saldos en UDES se colonizan según el tipo de cambio de hoy, si no, el de ayer.
+                // Los saldos en UDES se colonizan según el tipo de cambio de hoy, si no, el de ayer.
                 if (elTipoDeCambioDeUDESDeHoy > 0)
                     elMontoConvertido = elMontoNominalDelSaldo * elTipoDeCambioDeUDESDeHoy;
                 else
                     elMontoConvertido = elMontoNominalDelSaldo * elTipoDeCambioDeUDESDeAyer;
             else
                 elMontoConvertido = elMontoNominalDelSaldo;
-
             decimal elValorDeMercado = elMontoConvertido * (elPrecioLimpioDelVectorDePrecios / 100);
+            laValoracion.ValorDeMercado = elValorDeMercado;
+
+            TimeSpan laDiferenciaEntreLasFechas = laFechaDeVencimientoDelValorOficial.Subtract(laFechaActual);
+            double losDiasAlVencimiento = laDiferenciaEntreLasFechas.TotalDays;
+            // Si no cumple los días mínimkos, el porcentaje de cobertura es cero
+            decimal elPorcentajeDeCoberturaRevisado = 0;
+            if (losDiasAlVencimiento < losDiasMinimosAlVencimientoDelEmisor)
+                elPorcentajeDeCoberturaRevisado = 0;
+            else
+                elPorcentajeDeCoberturaRevisado = elPorcentajeCobertura;
+            laValoracion.PorcentajeCobertura = elPorcentajeDeCoberturaRevisado;
 
             decimal elAporteDeGarantia = elValorDeMercado * elPorcentajeDeCoberturaRevisado;
-
             laValoracion.AporteDeGarantia = elAporteDeGarantia;
-            laValoracion.ISIN = elISIN;
-            laValoracion.ValorDeMercado = elValorDeMercado;
-            laValoracion.PorcentajeCobertura = elPorcentajeDeCoberturaRevisado;
- 
+
             return laValoracion;
         }
     }
